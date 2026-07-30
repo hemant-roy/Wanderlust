@@ -15,7 +15,7 @@ await newReview.save();
 await listing.save();
 console.log("review saved");
 // res.send("new review saved");
-res.redirect(`/listings${listing._id}`);
+res.redirect(`/listings/${listing._id}`);
 }));
 // Delete Review Route
 router.delete("/:reviewId", wrapAsync(async (req, res) => {
