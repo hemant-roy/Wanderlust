@@ -17,6 +17,13 @@ router.get(
 router.get("/new", (req, res) => {
   res.render("listings/new.ejs");
 });
+//edit route
+router.get("/:id/edit",wrapAsync (async (req,res)=>{
+        let{id}=req.params;
+    const listing=await Listing.findById(id);
+    res.render("listings/edit.ejs",{listing});
+
+}));
 
 // Show Route
 router.get(
@@ -28,13 +35,7 @@ router.get(
   })
 );
 
-//edit route
-router.get("/:id/edit",wrapAsync (async (req,res)=>{
-        let{id}=req.params;
-    const listing=await Listing.findById(id);
-    res.render("listings/edit.ejs",{listing});
 
-}));
 //update route
 router.put("/:id",wrapAsync (async(req,res)=>{
    let{id}=req.params;
